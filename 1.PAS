@@ -4,18 +4,16 @@ var
         max,k,s,c,m,n,min,i,j:integer;
         a:array[1..100,1..100] of integer;
         b:array[1..100] of integer;
-        f:text;
 begin
+     randomize;
      clrscr;
-     assign(f,'in.txt');
-     reset(f);
      write('strok: ');
      readln(m);
      write('stolbcov: ');
      readln(n);
      for i:=1 to m do
          for j:=1 to n do
-	               read(f,a[i,j]);
+	               a[i,j]:=100+random(900);
      min:=a[1,1];
      for i:=1 to m do begin
 	              writeln;
@@ -35,7 +33,7 @@ begin
                       for k:=1 to m-1 do begin
                                          max:=b[k];
                                          c:=k;
-                                         for i:=k+1 to N do
+                                         for i:=k to N do
                                          if b[i]>max then begin
                                                           max:=b[i];
                                                           c:=i
@@ -43,7 +41,6 @@ begin
                                          b[c]:=b[k];
                                          b[k]:=max
                                          end;
-     close(f);
      writeln;
      writeln;
      for i:=1 to m do writeln(b[i]);
